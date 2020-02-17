@@ -1,0 +1,66 @@
+//COLORS
+$primary_color: #262626;
+$secondary_color: #fafafa;
+$gray_color: #f5f5f5;
+$dark_gray_color: #b3b3b3;
+$light_color: #fcfcfc;
+$black_color: #0a121e;
+
+//SIZES
+$xxsmall_fontsize: 0.7rem;
+$xsmall_fontsize: 1.1rem;
+$small_fontsize: 1.3rem;
+$standard_fontsize: 1.6rem;
+$normal_fontsize: 2rem;
+$large_fontsize: 2.4rem;
+$xlarge_fontsize: 4.5rem;
+
+$space_between                    : 1.5rem;
+$wrapper_width                    : 165rem;
+$wrapper_padding                  : 2rem;
+$ie-wrapper-width                 : 1200px;
+$ie-wrapper-padding               : 30px;
+
+$grid_columns                     : 12;
+$grid_gutter                      : 3rem;
+
+
+// Z-INDEX
+$z_index_over_all                 : 10000;
+$z_index_modal                    : 9000;
+$z_index_overlay                  : 8000;
+$z_index_dropdown                 : 7000;
+$z_index_header                   : 6000;
+$z_index_footer                   : 5000;
+$z_index_over_content             : 1000;
+$z_index_over_base                : 10;
+$z_index_content                  : 5;
+$z_index_base                     : 1;
+$z_index_under_base               : -10;
+
+
+// TIMES
+$duration_default                 : 300ms;
+$duration_slow                    : 900ms;
+$duration_fast                    : 100ms;
+
+
+// TRANSITIONS
+$transition_default               : all $duration_default ease;
+$transition_slow                  : all $duration_slow ease;
+$transition_fast                  : all $duration_fast ease;
+
+//BREAKPOINTS
+$breakpoints : (
+    mobile-s : 320,
+    mobile : 375,
+    mobile-l : 425,
+    phablet : 520,
+    portrait : 768,
+    tablet : 1024,
+    laptop-s : 1280,
+    laptop : 1366,
+    laptop-l: 1440,
+    desktop: 1680,
+    hd: 1920
+);

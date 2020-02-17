@@ -1,0 +1,48 @@
+// Mixins for defining burger behaviour.
+// For reference check out: https://jonsuh.com/hamburgers/
+
+// Squeeze – external lines to center, then rotates. Center line scales to 0
+@mixin burger-squeeze {
+
+	&:before,
+	&:after {
+		transition: transform $duration_default;
+	}
+
+	&-label {
+		transition: $duration_default $duration_fast;
+		transition-property: opacity, transform;
+	}
+
+	.menu-visible & {
+
+		&:before,
+		&:after {
+			animation-duration: $duration_default;
+			transform: none;
+		}
+
+		&:before {
+			animation-name: burger-squeeze-top;
+		}
+
+		&-label {
+			transition-delay: 0ms;
+			opacity: 0;
+		}
+
+		&:after {
+			animation-name: burger-squeeze-bottom;
+		}
+	}
+
+	@keyframes burger-squeeze-open-top {
+		0% {
+			transform: none;
+		}
+
+		50% {
+			transform: translateY(#{.5 * ($burger_height - $burger_line_height)});
+		}
+	}
+}

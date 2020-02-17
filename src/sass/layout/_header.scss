@@ -1,0 +1,14 @@
+header { display: flex; justify-content: space-around; position: fixed; width: 100%; padding: 0; height: 10rem; background-color: black; z-index: $z_index_over_all;
+    img { width: 19.5rem; height: 1.6rem; }
+}
+
+.logo { padding-top: 3.9rem; }
+
+ul { list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: black; }
+  
+li { float: left; text-transform: uppercase;
+  a { display: block; color: white; text-align: center; padding: 3.9rem 1.8rem; text-decoration: none;
+    &:hover { background-color: #111; 
+    }
+  }
+}

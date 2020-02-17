@@ -1,0 +1,188 @@
+/*
+Let's you add code for specific window size.
+
+Properties:
+- $from (string | number): defines where included code starts working. Using values from '$breakpoints' map in '_variables.scss' is suggested but you can also use custom ones;
+
+- $to (string | number): defines where included code stops working. Also custom values are allowed;
+
+- $exclude (string | list | [list]): defines breakpoints that are excluded from working. You can define single (i.e. $exclude: tablet), multiple (i.e. $exclude: tablet phablet) or ranged  (i.e. $exclude: [tablet phablet]) values. As far as multiple values let you exclude only particular breakpoints (tablet and phablet separately), ranged values exclude those breakpoints and everything between (from tablet to phablet);
+
+- $only (string | list): use it if you want to add styles only for particular breakpoints. Will be ignored if '$from' or '$to' are defined;
+
+- $height (boolean): use it if you want mixin to work with the screen height instead of its width;
+
+- $landscape (boolean): use it if you want to execute code only if screen width is greater than its height;
+
+- $also (string): lets you duplicate defined styles for some other occassions i.e. $bp(tablet, $also: '.touch') may be helplful if you want your code to be executed on the tablets but also devices that support screen touch.
+
+For examples, look at the bottom of this file.
+*/
+
+@mixin bp(
+    $from: null,
+    $to: null,
+    $exclude: null,
+    $only: null,
+    $height: false,
+    $landscape: false,
+    $also: null
+) {
+    $query: "";
+    $ranges: ();
+    $ranges: append($ranges, ());
+
+    $query: if($landscape == true, $query + 'and (orientation: landscape)', $query);
+
+    @if $from {
+        $ranges: set-nth($ranges, length($ranges), ('from': $from));
+    }
+
+    @if $exclude {
+        $keys: map-keys($breakpoints);
+        $values: map-values($breakpoints);
+
+        @if is-bracketed($exclude) {
+            $exclude: append((), $exclude);
+        }
+
+        @for $i from 1 through length($exclude) {
+            $range: nth($exclude, $i);
+
+            $exclude_to: nth($range, 1);
+            $exclude_from: nth($range, length($range));
+
+            $index_to: index($keys, $exclude_to);
+            $index_from: index($keys, $exclude_from);
+
+            $exclude_to: nth($keys, $index_to + 1);
+            $exclude_from: nth($keys, $index_from - 1);
+
+            $temp: map-merge(nth($ranges, length($ranges)), ('to': $exclude_to));
+            $ranges: set-nth($ranges, length($ranges), $temp);
+            $ranges: append($ranges, ('from': $exclude_from));
+        }
+    }
+
+    @if $to {
+        $temp: map-merge(nth($ranges, length($ranges)), ('to': $to));
+        $ranges: set-nth($ranges, length($ranges), $temp);
+    }
+
+    @if $also {
+        #{$also} & {
+            @content;
+        }
+    }
+
+    @if $only {
+        @if not $from and not $to {
+            @for $i from 1 through length($only) {
+                $bp: nth($only, $i);
+
+                @if not map-has-key($breakpoints, $bp) {
+                    @error 'In case of using \'$only\', you can use nothing except breakpoints defined in \'$breakpoints\' map in \'_variables.scss\'.';
+                }
+
+                @if $i == 1 {
+                    $ranges: set-nth($ranges, length($ranges), ('from': $bp, 'to': $bp));
+                } @else {
+                    $ranges: append($ranges, ('from': $bp, 'to': $bp));
+                }
+            }
+        } @else {
+            @warn 'There are \'$from\' or \'$to\' defined – \'$only\' is ignored.';
+        }
+    }
+
+    @for $i from 1 through length($ranges) {
+        $range: nth($ranges, $i);
+        $from: '';
+        $to: '';
+
+        @if length($range) > 0 {
+            @for $j from 1 through length($range) {
+                $point: nth($range, $j);
+                $label: nth($point, 1);
+                $bp: nth($point, 2);
+
+                @if type-of($bp) != number {
+                    @if map-has-key($breakpoints, $bp) {
+                        @if $label == 'from' {
+                            $index: index(map-keys($breakpoints), $bp) + 1;
+
+                            @if $index > length($breakpoints) {
+                                @error 'There is no upper limit for \'#{$bp}\' breakpoint as it\'s the highest one – you can\'t set it for \'$from\' property.';
+                            }
+
+                            $bp: nth(map-values($breakpoints), $index) - 1;
+                        }
+
+                        @if $label == 'to' {
+                            $bp: map-get($breakpoints, $bp);
+                        }
+
+                        $range: map-merge($range, ($label: $bp));
+                    } @else {
+                        @error 'Invalid value for \'$#{$label}\' property. Try to use number or one of the breakpoints defined in \'variables.scss\'.';
+                    }
+                }
+            }
+        }
+
+        $from: map-get($range, from);
+        $to: map-get($range, to);
+
+        $length: if($height == true, 'height', 'width');
+
+        $from: if($from, 'and (max-#{$length}: #{$from}px)', '');
+        $to: if($to, 'and (min-#{$length}: #{$to}px)', '');
+
+        @media screen #{$from $to $query} {
+            @content;
+        }
+    }
+}
+
+
+/*
+Examples:
+
+// Excludes tablet and phablet
+// @include bp($from: desktop, $to: mobile-s, $exclude: tablet phablet) { background: tomato; }
+
+// Excludes range from tablet to phablet, so portrait also
+// @include bp($from: desktop, $to: mobile-s, $exclude: [tablet phablet]) { background: tomato; }
+
+// Adds styles also for specific cases, i.e. if device has no touch or for particular section
+// @include bp(phablet, $also: '.menu-visible') { background-color: tomato; }
+
+// Adds styles for particular breakpoints only. Will be ignored if $from or $to are defined
+//    Will work
+// @include bp($only: tablet phablet) { background-color: tomato;}
+// @include bp($only: hd) { background-color: tomato;}
+
+
+//    Will not work
+// @include bp($from: tablet, $only: phablet) { background-color: tomato;}
+
+// Applies styles only if width of the screen is greater than its height
+// @include bp($landscape: true) { background-color: tomato;}
+
+// Custom values
+// @include bp(portrait, 300) { background-color: tomato;}
+
+// Height instead of width
+// @include bp(400, $height: true) { background-color: tomato;}
+
+// Errors:
+// - wrong values
+// @include bp(portrait, janusz) { background-color: tomato;}
+
+// - $from set to the highest breakpoint
+// @include bp(hd) { background-color: tomato;}
+
+// - custom/wrong value for $only
+// @include bp($only: janusz) { background-color: tomato;}
+
+*/

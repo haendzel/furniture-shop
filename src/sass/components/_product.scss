@@ -1,0 +1,3 @@
+.product { height: 460px; flex: 1 0 22%; max-width: 23%; border: 1px solid #ebebeb; margin-bottom: 30px;  
+    @include bp(portrait) { width: auto; }
+}

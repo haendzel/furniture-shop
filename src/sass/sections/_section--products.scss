@@ -1,5 +1,8 @@
 .products { 
     .store { 
-        &-main { display: flex; flex-wrap: wrap; justify-content: space-between; }
+        &-upper { 
+            img { vertical-align: middle; }
+        }
+        &-main { display: flex; flex-flow: row wrap; justify-content: flex-start; margin-top: 2px; }
     }
 }

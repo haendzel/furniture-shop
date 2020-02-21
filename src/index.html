@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="css/main.min.css">
-    <title>Document</title>
+    <title>Moje meble</title>
 </head>
 
 <body>
@@ -35,31 +35,32 @@
 
                 <section class="products">
                     <div class="store-upper">
-                        <span><img src="images/timer.svg">PRODUKTY NA godzine 10:00</span>
-                        <span><img src="images/danger.svg">Akcja “Gorący Czwartek” nie łączy się z innymi promocjami</span>
+                        <div><img src="images/timer.svg"><span>produkty na godzine <strong class="hour">10:00</strong></span></div>
+                        <div><img src="images/danger.png"><span class="action">Akcja “Gorący Czwartek” nie łączy się z innymi promocjami</span></div>
                     </div>
-                    <div class="store-main">
-                        <div class="product"></div>
-                        <div class="product"></div>
-                        <div class="product"></div>
-                        <div class="product"></div>
-                        <div class="product"></div>
-                        <div class="product"></div>
-                        <div class="product"></div>
-                        <div class="product"></div>
-                    </div>
-                    <div class="store-bottom">
-                        1,2,3
-                    </div>
-                </section>
-            </div>
+                    <div class="store-main"></div>
+                </div>
 
-                <footer class="footer">
-                    <div class="container">Footer</div>
-                </footer>
-                
+                <div class="store-bottom">
+                    <div class="container">
+                        <div class="selected-buttons"><span class="select">Wybierz ilość wyświetlanych produktów:</span>
+                            <button data-view="2" class="button">2</button>
+                            <button data-view="4" class="button">4</button>
+                            <button data-view="8" class="button">8</button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
         </div>
+
+    <footer class="footer">
+        <div class="container">Footer</div>
+    </footer>     
+
+</div>
     <script src="js/main.min.js"></script>
+    <script src="other/example.json"></script>
 </body>
 
 </html>

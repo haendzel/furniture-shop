@@ -1,36 +1,44 @@
 .product { height: 457px; width: calc(100% / 4 - 30px); border: 1px solid #ebebeb; box-sizing: border-box; margin-right: 30px; margin-bottom: 30px; position: relative;
     @include bp(desktop) { width: calc(100% / 4 - 20px); }
-    @include bp($from: laptop-l, $to: portrait) { margin-right: 20px; margin-bottom: 20px; }
-    //@include bp(portrait) { flex: 0 0 33%} 
-    @include bp(phablet) { width: calc(100% / 2 - 5px); max-height: 300px; margin-right: 5px; margin-bottom: 5px; }
+    @include bp(tablet) { width: calc(100% / 3 - 15px); margin-right: 15px; margin-bottom: 15px; max-height: 330px; } 
+    @include bp(phablet) { width: calc(100% / 2 - 5px); max-height: 260px; margin-right: 5px; margin-bottom: 5px; }
     &:hover { border: 1px solid #000; }
     &-inner { padding: 20px;
-        @include bp(phablet) { padding: 10px; }
+        @include bp(phablet) { padding: 5px; }
         .inner-upper {
             .promobox { position: absolute; top: -1px; right: -1px; display: inline; display: flex; justify-content: space-between; width: 100%;
                 .discount { background: #fff; border: 1px solid #f00; padding: 10px 15px; color: #f00; font-size: 15px; z-index: $z_index_content;
+                    @include bp(portrait) { font-size: 12px; }
                     span { @include gotham-bold; font-weight: 700; } 
                 }
                 .number { padding: 12px; padding-left: 50px; font-size: 13px; font-weight: 400;
-                    @include bp(phablet) { padding-left: 0; }
+                    @include bp(tablet) { margin: auto; padding: 5px; font-size: 10px; }
                     span { vertical-align: middle; }
-                    img { margin-right: 10px; vertical-align: middle; }}
+                    img { margin-right: 10px; vertical-align: middle; 
+                        @include bp(portrait) { width: 20%; }
+                        @include bp(phablet) { width: 30%; }
+                    }
+                }
             }
         }
         .inner-photo, .inner-parameters { position: absolute; };
-        .inner-photo { top: 50%; left: 50%; transform: translate(-50%, -50%);
-            @include bp(phablet) { max-width: 80%; }
+        .inner-photo { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%;
+            @include bp(portrait) { max-width: 80%; }
         }
         .inner-parameters { bottom: 5px; padding-right: 10px;
             p { margin: 0; }
             .price { font-family: 'Gotham', sans-serif; font-size: 20px; font-weight: 700; color: #ff0000; line-height: 35px;
-                @include bp(phablet) { font-size: 15px; }
+                @include bp(portrait) { font-size: 15px; line-height: 10px; }
             }
             del { margin-left: 10px;
-                @include bp(phablet) { font-size: 12px; }
+                @include bp(portrait) { font-size: 10px; margin: 0 0 5px 5px; display: block; }
             }
-            .name { margin-bottom: 3px; font-size: 13px; font-family:'Gotham Book', sans-serif !important; font-weight: 400; }
-            .brand { color: #9f9f9f; margin-bottom: 20px; font-size: 13px; }
+            .name { margin-bottom: 3px; font-size: 13px; font-family:'Gotham Book', sans-serif !important; font-weight: 400;
+                @include bp(portrait) { font-size: 11px; }
+            }
+            .brand { color: #9f9f9f; margin-bottom: 20px; font-size: 13px; 
+                @include bp(portrait) { font-size: 11px; margin-bottom: 5px; }
+            }
             
         }
     }

@@ -1,18 +1,28 @@
 .store {
     &-upper { height: 110px; display: flex; justify-content: space-between;
-        @include bp(phablet) { height: auto; }
-        img, svg { fill: red; }
+        @include bp(phablet) { height: auto; margin: 10px 0 10px 0; }
+        img, svg { fill: red; width: 15px; height: auto; }
         span { line-height: 115px; margin-left: 20px; font-size: 20px; vertical-align: middle;
-            @include bp(phablet) { line-height: 25px; }
+            @include bp(phablet) { line-height: 15px; font-size: 13px; margin-left: 5px; }
         }
-        .action { text-transform: none !important; font-size: 14px; margin-left: 10px; }
+        .action { text-transform: none !important; font-size: 14px; margin-left: 10px;
+            @include bp(phablet) { font-size: 11px; }
+        }
+        div { width: 50%;
+            &:nth-of-type(1) { display: flex;
+                span { margin: auto 10px; }
+            }
+        }
         strong { @include gotham-bold; }
         &:first-of-type span { text-transform: uppercase; }
         &:last-of-type span  { text-transform: none !important; }
     }
     &-bottom { 
-        .selected-buttons { margin: 40px 0 40px 0; text-align: right; font-size: 13px; }
+        .selected-buttons { margin: 40px 0 40px 0; text-align: right; font-size: 13px;
+            @include bp(tablet) { font-size: 11px; text-align: center; }
+        }
         button { border: 1px solid #ea2423; padding: 10px; color: #ea2423; margin: 2px; background: white; outline: none; font-size: 13px; 
+            @include bp(portrait) { padding: 8px; }
             &:hover, &:active {
                 background-color: #ea2423; color: #f8f8f8; 
             }

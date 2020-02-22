@@ -1,9 +1,11 @@
-.product { height: 457px; flex: 1 0 25%; max-width: 357px; border: 1px solid #ebebeb; margin-right: 30px; margin-bottom: 30px; position: relative;
-    @include bp(phablet) { flex: 0 0 46%; margin-right: 15px; margin-bottom: 15px; max-height: 300px; }
+.product { height: 457px; width: calc(100% / 4 - 30px); border: 1px solid #ebebeb; box-sizing: border-box; margin-right: 30px; margin-bottom: 30px; position: relative;
+    @include bp(desktop) { width: calc(100% / 4 - 20px); }
+    @include bp($from: laptop-l, $to: portrait) { margin-right: 20px; margin-bottom: 20px; }
+    //@include bp(portrait) { flex: 0 0 33%} 
+    @include bp(phablet) { width: calc(100% / 2 - 5px); max-height: 300px; margin-right: 5px; margin-bottom: 5px; }
     &:hover { border: 1px solid #000; }
-    &:nth-of-type(4), &:nth-of-type(8) { margin-right: 0; }
-    @include bp(portrait) { width: auto; }
     &-inner { padding: 20px;
+        @include bp(phablet) { padding: 10px; }
         .inner-upper {
             .promobox { position: absolute; top: -1px; right: -1px; display: inline; display: flex; justify-content: space-between; width: 100%;
                 .discount { background: #fff; border: 1px solid #f00; padding: 10px 15px; color: #f00; font-size: 15px; z-index: $z_index_content;

@@ -1,8 +1,17 @@
 .banner { display: flex; flex-direction: row; text-align: center;
-    .ad { background-image: url(../../images/promo.png); height: 300px; width: 66%; }
-    .countdown { width: 437px; height: 192px; font-size: 16px; text-transform: uppercase; margin: auto 10px; border: 1px solid white;
+    @include bp(tablet) { flex-direction: column; }
+    .ad { height: 300px;
+        img { width: 100%; }
+        @include bp(tablet) { height: 200px; width: 100%; height: auto; }
+    }
+    .countdown { width: 437px; height: 192px; font-size: 16px; text-transform: uppercase; margin: auto 40px; border: 1px solid white;
+        @include bp(tablet) { margin: auto; margin-top: 20px; margin-bottom: 40px; }
         .timer, h5 { @include gotham-bold; }
-        .timer { font-size: 54px; margin: 20px 0 20px 0; }
-        h5 { font-size: 19px; text-transform: uppercase; word-spacing: 40px; color: #2c2423; font-weight: 700; }
+        .timer { font-size: 54px; margin: 20px 0 20px 0;
+            @include bp(portrait) { font-size: 40px; } 
+        }
+        h5 { font-size: 19px; text-transform: uppercase; word-spacing: 40px; color: #2c2423; font-weight: 700; 
+            @include bp(portrait) {font-size: 16px; word-spacing: 30px; }
+        }
     }
 }

@@ -1,7 +1,9 @@
 .store {
     &-upper { height: 110px; display: flex; justify-content: space-between;
         @include bp(phablet) { height: auto; margin: 10px 0 10px 0; }
-        img, svg { fill: red; width: 15px; height: auto; }
+        img, svg { fill: red;
+            @include bp(portrait) { width: 15px; height: auto; }
+        }
         span { line-height: 115px; margin-left: 20px; font-size: 20px; vertical-align: middle;
             @include bp(tablet) { line-height: 15px; font-size: 13px; margin-left: 5px; }
         }

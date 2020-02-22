@@ -1,4 +1,4 @@
-let endDate = new Date("Mar 28, 2020 23:59:59").getTime();
+let endDate = new Date("Mar 01, 2020 23:59:59").getTime();
 
 
 let i = setInterval(function() {

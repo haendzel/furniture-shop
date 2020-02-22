@@ -1,0 +1,8 @@
+.banner { display: flex; flex-direction: row; text-align: center;
+    .ad { background-image: url(../../images/promo.png); height: 300px; width: 66%; }
+    .countdown { width: 437px; height: 192px; font-size: 16px; text-transform: uppercase; margin: auto; border: 1px solid white;
+        .timer, h5 { @include gotham-bold; }
+        .timer { font-size: 54px; margin: 20px 0 20px 0; }
+        h5 { font-size: 19px; text-transform: uppercase; word-spacing: 40px; color: #2c2423; font-weight: 700; }
+    }
+}

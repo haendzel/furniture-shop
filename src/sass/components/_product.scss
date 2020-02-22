@@ -1,5 +1,6 @@
 .product { height: 457px; width: calc(100% / 4 - 30px); border: 1px solid #ebebeb; box-sizing: border-box; margin-right: 30px; margin-bottom: 30px; position: relative;
     @include bp(desktop) { width: calc(100% / 4 - 20px); }
+    @include bp(laptop) { margin-right: 20px; }
     @include bp(tablet) { width: calc(100% / 3 - 15px); margin-right: 15px; margin-bottom: 15px; max-height: 330px; } 
     @include bp(phablet) { width: calc(100% / 2 - 5px); max-height: 260px; margin-right: 5px; margin-bottom: 5px; }
     &:hover { border: 1px solid #000; }
@@ -12,6 +13,7 @@
                     span { @include gotham-bold; font-weight: 700; } 
                 }
                 .number { padding: 12px; padding-left: 50px; font-size: 13px; font-weight: 400;
+                    @include bp(laptop) { padding-left: 20px; }
                     @include bp(tablet) { margin: auto; padding: 5px; font-size: 10px; }
                     span { vertical-align: middle; }
                     img { margin-right: 10px; vertical-align: middle; 

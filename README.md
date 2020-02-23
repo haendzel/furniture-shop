@@ -12,4 +12,6 @@ Simple example of part e-commerce furniture store with JSON data.
 | CSS3/Sass |
 | Javascript ES6+ |
 | Gulp |
+| Fetch API |
+| JSON |
 | npm |

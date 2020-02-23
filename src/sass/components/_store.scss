@@ -24,6 +24,7 @@
         &:first-of-type span { text-transform: uppercase; }
         &:last-of-type span  { text-transform: none !important; }
     }
+    &-main { }
     &-bottom { 
         .selected-buttons { margin: 40px 0 40px 0; text-align: right; font-size: 13px;
             .select { @include bp(phablet) { display: block; margin-bottom: 10px; }

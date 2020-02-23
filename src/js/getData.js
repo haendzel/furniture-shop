@@ -14,8 +14,12 @@ fetch('other/example.json')
     const buttons = document.querySelectorAll('.button');
     for (const button of buttons) {
         button.addEventListener('click', function(e) {
+            let activeButton = document.getElementsByClassName("button-active")
+            if (activeButton.length > 0){	
+                activeButton[0].className = "";
+            }
+            button.className = "button-active";
             let viewData = e.target.getAttribute('data-view');
-            //button.classList.toggle('button-active');
             if (viewData == 2) {
                 mainStore.innerHTML = "";
                 for (let i = 0; i < 2; i++) {

@@ -5,13 +5,15 @@
         @include bp(tablet) { height: 200px; width: 100%; height: auto; }
     }
     .countdown { width: 437px; height: 192px; font-size: 16px; text-transform: uppercase; margin: auto 40px; border: 1px solid white;
-        @include bp(tablet) { margin: auto; margin-top: 20px; margin-bottom: 40px; }
+        @include bp(laptop-s) { width: 300px; margin: auto; }
+        @include bp(phablet) { font-size: 12px; width: 240px; height: auto; margin-top: 20px; margin-bottom: 40px; padding: 5px 15px; }
         .timer, h5 { @include gotham-bold; }
         .timer { font-size: 54px; margin: 20px 0 20px 0;
-            @include bp(portrait) { font-size: 40px; } 
+            @include bp(portrait) { font-size: 32px; } 
         }
         h5 { font-size: 19px; text-transform: uppercase; word-spacing: 40px; color: #2c2423; font-weight: 700; 
             @include bp(portrait) {font-size: 16px; word-spacing: 30px; }
+            @include bp(phablet) { font-size: 12px; }
         }
     }
 }

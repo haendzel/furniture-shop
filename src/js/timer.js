@@ -12,7 +12,7 @@ let i = setInterval(function() {
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
-    document.querySelector('.timer').innerHTML = `${days} : ${hours < 10 ? ("0" + hours) : hours} : ${minutes < 10 ? ("0" + minutes) : minutes} : ${seconds < 10 ? ("0" + seconds) : seconds}`;
+    document.querySelector('.timer').innerHTML = `${days} <em>:</em> ${hours < 10 ? ("0" + hours) : hours} <em>:</em> ${minutes < 10 ? ("0" + minutes) : minutes} <em>:</em> ${seconds < 10 ? ("0" + seconds) : seconds}`;
     
 
     if (distance < 0) {

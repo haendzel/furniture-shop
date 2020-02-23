@@ -9,6 +9,9 @@ const postcss = require('gulp-postcss');
 const sass = require('gulp-sass');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+// const webpack = require('webpack')
+// const webpackStream = require('webpack-stream');
+// const webpackConfig = require('./webpack.config.js')
 const pixrem = require('gulp-pixrem');
 
 const config = {
@@ -34,6 +37,12 @@ const config = {
         './dist/main.css'
     ]
 }
+
+// function webpackTask() {
+//     gulp.src('./src/js/main.js')
+//     .pipe(webpackStream(webpackConfig), webpack)
+//     .pipe(gulp.dest('./dist/js'));
+// }
 
 function jsTask(done) {
     src(config.app.js)
@@ -110,5 +119,6 @@ function cleanUp() {
     return del([config.dist.base]);
 }
 
+// exports.webpack = webpackTask;
 exports.dev = parallel(jsTask, cssTask, fontTask, imagesTask, templateTask, phpTask, watchFiles, liveReload);
 exports.build = series(cleanUp, parallel(jsTask, cssTask, fontTask, imagesTask, templateTask, phpTask));

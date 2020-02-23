@@ -1,5 +1,3 @@
-import 'whatwg-fetch';
-
 const mainStore = document.querySelector('.store-main');
 let arr = [];
 

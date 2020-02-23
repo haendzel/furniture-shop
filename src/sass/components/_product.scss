@@ -27,6 +27,7 @@
             @include bp(portrait) { max-width: 80%; }
         }
         .inner-parameters { top: 80%; padding-right: 10px;
+            @include bp(tablet) { top: 70%; }
             @include bp(phablet) { top: 65%; }
             p { margin: 0; }
             .price { font-family: 'Gotham', sans-serif; font-size: 20px; font-weight: 700; color: #ff0000; line-height: 35px;

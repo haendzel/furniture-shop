@@ -9,6 +9,7 @@
         }
         .action { text-transform: none !important; font-size: 14px; margin-left: 10px;
             @include bp(tablet) { font-size: 11px; }
+            @include bp(phablet) { font-size: 10px; }
         }
         div { 
             @include bp(tablet) { width: 50%; }

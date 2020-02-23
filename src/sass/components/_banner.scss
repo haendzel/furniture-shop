@@ -4,21 +4,21 @@
         img { width: 100%; }
         @include bp(tablet) { height: 200px; width: 100%; height: auto; }
     }
-    .countdown { width: 437px; height: 192px; font-size: 16px; text-transform: uppercase; margin: auto 40px; border: 1px solid white;
+    .countdown { width: 435px; height: 190px; font-size: 16px; text-transform: uppercase; margin: auto 35px; border: 1px solid white;
         @include bp(laptop-s) { width: 350px; height: auto; margin: auto; margin-top: 20px; margin-bottom: 20px; padding: 20px 15px; }
         @include bp(phablet) { font-size: 10px; width: 240px; margin-top: 10px; margin-bottom: 20px; padding: 15px; }
         .timer, h5 { @include gotham-bold; white-space: nowrap; }
-        .timer { font-size: 54px; margin: 20px 0 20px 0; margin-bottom: 0; margin-top: 13px; word-spacing: -20px;
+        .timer { font-size: 54px; margin: 20px 0 20px 0; margin-bottom: 0; margin-top: 11px; word-spacing: -20px;
             @include bp(tablet) { font-size: 32px; word-spacing: 7px; }
             @include bp(portrait) { font-size: 28px; } 
             @include bp(phablet) { font-size: 22px; margin: 10px 0; letter-spacing: 0.08em; word-spacing: -3px; }
         }
-        em { font-style: normal; @include gotham-book; margin: 7px; }
+        em { font-style: normal; @include gotham-book; font-weight: 300; margin: 10px; }
         h5 { font-size: 19px; text-transform: uppercase; word-spacing: 40px; color: #2c2423; font-weight: 700; margin-top: 3px; padding-right: 20px;
             @include bp(tablet) {font-size: 16px; word-spacing: 30px; margin-bottom: 0; }
             @include bp(phablet) { font-size: 10px; margin: 0; word-spacing: 21px; padding-right: 7px; }
         }
-        span { display: inline-block; margin-top: 35px;
+        span { display: inline-block; margin-top: 39px;
             @include bp(tablet) { display: inline; margin-top: 0; }
         }
     }

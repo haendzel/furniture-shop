@@ -24,4 +24,4 @@ Simple example of part e-commerce furniture store with JSON data.
 | Chrome: 80.1 | :heavy_check_mark: |
 |Firefox 73.0 | :heavy_check_mark: |
 |Edge 38 | :heavy_check_mark: |
-| IE 11 | :skull: |
+| IE 11 | :question: |
